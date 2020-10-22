@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".register.RegisterActivity">
+
+            <ImageView
+                android:id="@+id/iv_back_regist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_loginactivity"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text="Signup"
+                android:textColor="#46505c"
+                android:textFontWeight="700"
+                android:textSize="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.109"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.116" />
+
+            <TextView
+                android:id="@+id/tv_createAcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:text="Create Account"
+                android:textColor="#858d96"
+                android:textFontWeight="400"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.112"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.195" />
+
+            <TextView
+                android:id="@+id/tv_fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Full Name"
+                android:textColor="#9ea0a5"
+                android:textFontWeight="400"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.092"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_createAcc"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et_fullname"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="343dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Enter Full Name"
+                android:paddingLeft="10dp"
+                android:textColor="#252121"
+                android:background="@drawable/new_edit_text"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fullname"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <TextView
+                android:id="@+id/tv_emailR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Email"
+                android:textColor="#9ea0a5"
+                android:textFontWeight="400"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.093"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_fullname"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et_emailR"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="343dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Enter Email"
+                android:paddingLeft="10dp"
+                android:textColor="#252121"
+                android:background="@drawable/new_edit_text"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_emailR"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Phone Number"
+                android:textColor="#9ea0a5"
+                android:textFontWeight="400"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.093"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_emailR"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="343dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Enter Phone Number"
+                android:paddingLeft="10dp"
+                android:textColor="#252121"
+                android:background="@drawable/new_edit_text"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <TextView
+                android:id="@+id/tv_passwordR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Password"
+                android:textColor="#9ea0a5"
+                android:textFontWeight="400"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.093"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_phone"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et_passwordR"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="343dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Enter Password"
+                android:paddingLeft="10dp"
+                android:textColor="#252121"
+                android:background="@drawable/new_edit_text"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_passwordR"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <TextView
+                android:id="@+id/tv_password_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Confirm Password"
+                android:textColor="#9ea0a5"
+                android:textFontWeight="400"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_passwordR"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et_password_confirm"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="343dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Enter Confirm Password"
+                android:paddingLeft="10dp"
+                android:textColor="#252121"
+                android:background="@drawable/new_edit_text"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_password_confirm"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="343dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#FBB017"
+                android:text="Signup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password_confirm"
+                app:layout_constraintVertical_bias="0.44" />
+
+            <LinearLayout
+                android:id="@+id/ll_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_signup">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Have Account?"
+                    android:textColor="#0E0E0E"
+                    tools:layout_editor_absoluteX="90dp"
+                    tools:layout_editor_absoluteY="544dp" />
+                <TextView
+                    android:id="@+id/tv_signin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sigin"
+                    android:textColor="#FBB017"
+                    tools:layout_editor_absoluteX="219dp"
+                    tools:layout_editor_absoluteY="544dp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>
