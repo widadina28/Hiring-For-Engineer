@@ -10,7 +10,7 @@
             android:layout_height="match_parent"
             android:background="#E5E5E5"
             android:paddingBottom="200dp"
-            tools:context=".profile.ProfileFragment">
+            tools:context=".profile.engineer.ProfileFragment">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_1"
@@ -167,6 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/gitlab_profile"
                         android:text="Logout"
+                        android:textColor="#9EA0A5"
                         android:drawableStart="@drawable/ic_logout"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="20dp"/>

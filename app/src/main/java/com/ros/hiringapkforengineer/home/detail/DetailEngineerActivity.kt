@@ -51,6 +51,7 @@ class DetailEngineerActivity : AppCompatActivity() {
             binding.jobProfile.text=it.data.nameFreelance
             binding.locationProfile.text=it.data.nameLoc
             binding.statusProfile.text=it.data.status
+            binding.emailProfile.text=it.data.emailAccount
             binding.descriptionProfile.text=it.data.descriptionEngineer
             Picasso.get().load("http://3.80.45.131:8080/uploads/" + it.data.image)
                     .placeholder(R.drawable.ic_baseline_person_24)
@@ -58,7 +59,6 @@ class DetailEngineerActivity : AppCompatActivity() {
             var data = it.data.nameSkill.split(",").map {
                 SkillModel(it)
             }
-            Log.d("Skill Detail", "$data")
             rvSkill = SkillAdapter(data)
             binding.recyclerviewSkillProfile.adapter = rvSkill
             binding.recyclerviewSkillProfile.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)

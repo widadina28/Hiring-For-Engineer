@@ -1,4 +1,4 @@
-package com.ros.hiringapkforengineer.profile
+package com.ros.hiringapkforengineer.profile.engineer
 
 
 import com.google.gson.annotations.SerializedName

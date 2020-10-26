@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_confirm" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.ros.hiringapkforengineer.profile.ProfileFragment"
+        android:name="com.ros.hiringapkforengineer.profile.engineer.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
