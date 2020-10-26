@@ -20,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var viewModel: RegisterViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
         sharedpref = SharedPrefUtil(applicationContext)
         val service = ApiClient.getApiClient(this)?.create(RegisterApiService::class.java)
@@ -45,6 +46,7 @@ class RegisterActivity : AppCompatActivity() {
             if (it) {
                 sharedpref.putBoolean(Constant.PREF_REGISTER, true)
                 Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
             else {

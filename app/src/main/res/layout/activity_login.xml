@@ -107,6 +107,7 @@
             android:hint="Enter Password"
             android:paddingLeft="10dp"
             android:textColor="#252121"
+            android:inputType="textPassword"
             android:background="@drawable/new_edit_text"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +164,7 @@
                 android:id="@+id/tv_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Signup"
+                android:text=" Signup"
                 android:textColor="#FBB017"
                 tools:layout_editor_absoluteX="219dp"
                 tools:layout_editor_absoluteY="544dp" />

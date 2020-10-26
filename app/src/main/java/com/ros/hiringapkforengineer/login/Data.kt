@@ -7,7 +7,7 @@ data class Data(
     @SerializedName("email_account")
     val emailAccount: String,
     @SerializedName("id_account")
-    val idAccount: Int,
+    val idAccount: String,
     @SerializedName("name_account")
     val nameAccount: String,
     @SerializedName("role")

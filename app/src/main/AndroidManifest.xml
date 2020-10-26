@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_hiengineer"
@@ -15,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HiringApkForEngineer"
         android:usesCleartextTraffic="true">
-        <activity android:name=".register.RegisterActivity"></activity>
+        <activity android:name=".confirm.choose_status.ChooseStatusActivity"></activity>
+        <activity android:name=".home.detail.DetailEngineerActivity"></activity>
+        <activity android:name=".bottomnav.BottomNavActivity" />
+        <activity android:name=".register.RegisterActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".Onboard" />
         <activity android:name=".MainActivity">

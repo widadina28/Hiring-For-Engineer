@@ -1,5 +1,6 @@
 package com.ros.hiringapkforengineer.login
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ros.hiringapkforengineer.utils.Constant
@@ -44,8 +45,15 @@ class ViewModelLogin: ViewModel(), CoroutineScope {
                     isToastLogin.value = true
                     if (response.data.role == "engineer") {
                         sharedpref.putString(Constant.PREF_TOKEN, response.data.token)
-                        sharedpref.putBoolean(Constant.PREF_IS_LOGIN, true)
+                        val a= sharedpref.putBoolean(Constant.PREF_IS_LOGIN, true)
+                        Log.d("sharedpref login", "$a")
+                        sharedpref.putString(Constant.PREF_ID_ACC, response.data.idAccount)
+                        sharedpref.putString(Constant.PREF_NAME, response.data.nameAccount)
+                        val b = sharedpref.putString(Constant.PREF_EMAIL, response.data.emailAccount)
+                        Log.d("email", "$b")
+                        val reg = sharedpref.getBoolean(Constant.PREF_REGISTER)
                         isLoginLiveData.value = true
+                        isRegisterLiveData.value = reg
                     } else {
                         isLoginLiveData.value = false
                     }
@@ -53,7 +61,8 @@ class ViewModelLogin: ViewModel(), CoroutineScope {
                 else {
                     isToastLogin.value = false
                 }
-            } else {
+            }
+            else {
                 isResponseLogin.value = false
             }
         }

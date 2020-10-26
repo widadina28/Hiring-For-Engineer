@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E5E5E5"
+            android:paddingBottom="200dp"
+            tools:context=".profile.ProfileFragment">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardBackgroundColor="#fff"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_profile"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="25dp"
+                        android:src="@drawable/ic_baseline_person_24"
+                        android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:id="@+id/name_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rosyida Widadina"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="22dp"
+                        android:layout_margin="10dp"
+                        android:textColor="#1F2A36"
+                        android:layout_below="@id/iv_profile" />
+                    <TextView
+                        android:id="@+id/job_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Android Developer"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"
+                        android:layout_below="@id/name_profile"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/location_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Ponorogo"
+                        android:drawableStart="@drawable/ic_location"
+                        android:layout_below="@id/job_profile"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"
+                        android:textColor="#9EA0A5"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="5dp"/>
+
+                    <TextView
+                        android:id="@+id/status_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fulltime"
+                        android:textSize="14dp"
+                        android:textColor="#9EA0A5"
+                        android:layout_below="@id/location_profile"
+                        android:fontFamily="@font/open_sans"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/description_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="This is Description"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"
+                        android:textColor="#9EA0A5"
+                        android:layout_below="@id/status_profile"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_skill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Skill"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="18dp"
+                        android:textColor="#1F2A36"
+                        android:layout_below="@id/description_profile"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_skill_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/tv_skill"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:id="@+id/email_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Email"
+                        android:textColor="#9EA0A5"
+                        android:drawableStart="@drawable/ic_email"
+                        android:layout_below="@id/recyclerview_skill_profile"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/instagram_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_instagram"
+                        android:text=" @instagram"
+                        android:textColor="#9EA0A5"
+                        android:layout_below="@id/email_profile"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/github_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_github"
+                        android:text=" @github"
+                        android:textColor="#9EA0A5"
+                        android:layout_below="@id/instagram_profile"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/gitlab_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_gitlab"
+                        android:text=" @gitlab"
+                        android:layout_below="@id/github_profile"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#9EA0A5"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="14dp"
+                        android:layout_marginBottom="20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gitlab_profile"
+                        android:text="Logout"
+                        android:drawableStart="@drawable/ic_logout"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="20dp"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                app:cardCornerRadius="7dp"
+                app:cardBackgroundColor="#fff"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/card_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabIndicatorColor="#5E50A1"
+                        app:tabTextColor="#1F2A36"
+                        android:background="#fff"
+                        app:tabIndicatorHeight="5dp"/>
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/view_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</layout>

@@ -13,4 +13,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="SearchAutoCompleteTextView" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:textColor">#9EA0A5</item>
+        <item name="android:textColorHint">#9EA0A5</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        ...
+        <item name="autoCompleteTextViewStyle">@style/SearchAutoCompleteTextView</item>
+    </style>
 </resources>
