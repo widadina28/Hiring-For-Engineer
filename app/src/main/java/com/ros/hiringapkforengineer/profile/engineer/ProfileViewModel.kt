@@ -22,7 +22,7 @@ class ProfileViewModel : ViewModel() {
     }
 
     fun getApiEngineerProfile() {
-        service.getEngineerByID(sharedpref.getString(Constant.PREF_ID_ACC)).enqueue(object : Callback<GetProfileResponse> {
+        service.getEngineerByIDAcc(sharedpref.getString(Constant.PREF_ID_ACC)).enqueue(object : Callback<GetProfileResponse> {
             override fun onFailure(call: Call<GetProfileResponse>, t: Throwable) {
 
             }

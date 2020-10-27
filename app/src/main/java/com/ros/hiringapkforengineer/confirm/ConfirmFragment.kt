@@ -48,6 +48,11 @@ class ConfirmFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.callApiConfirm()
+    }
+
     private fun subscribeLiveData(){
         viewModel.isConfirmResponse.observe(viewLifecycleOwner, Observer {
             (binding.recyclerConfirm.adapter as ConfirmAdapter).addList(it)

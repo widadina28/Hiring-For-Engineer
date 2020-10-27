@@ -14,8 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HiringApkForEngineer"
         android:usesCleartextTraffic="true">
-        <activity android:name=".confirm.choose_status.ChooseStatusActivity"></activity>
-        <activity android:name=".home.detail.DetailEngineerActivity"></activity>
+        <activity android:name=".profile.edit.EditProfileActivity"></activity>
+        <activity android:name=".form.skill.FormSkillActivity" />
+        <activity android:name=".form.FormEngineerActivity" />
+        <activity android:name=".confirm.choose_status.ChooseStatusActivity" />
+        <activity android:name=".home.detail.DetailEngineerActivity" />
         <activity android:name=".bottomnav.BottomNavActivity" />
         <activity android:name=".register.RegisterActivity" />
         <activity android:name=".login.LoginActivity" />

@@ -22,6 +22,7 @@ import com.ros.hiringapkforengineer.home.detail.VPDetailEngineerAdapter
 import com.ros.hiringapkforengineer.home.skill.SkillAdapter
 import com.ros.hiringapkforengineer.home.skill.SkillModel
 import com.ros.hiringapkforengineer.login.LoginActivity
+import com.ros.hiringapkforengineer.profile.edit.EditProfileActivity
 import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 import com.squareup.picasso.Picasso
 
@@ -30,7 +31,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
     private lateinit var sharedpref : SharedPrefUtil
     private lateinit var viewModel : ProfileViewModel
-    private lateinit var rv : SkillAdapter
+    private lateinit var rv : RecyclerView
     private lateinit var vpadapter : VPDetailEngineerAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,11 +49,18 @@ class ProfileFragment : Fragment() {
         vpadapter = VPDetailEngineerAdapter((activity as AppCompatActivity).supportFragmentManager)
         binding.viewProfile.adapter=vpadapter
         binding.tabProfile.setupWithViewPager(binding.viewProfile)
+        setUpListener()
         return binding.root
     }
     private fun setUpLogout(){
         binding.tvLogout.setOnClickListener {
            dialog()
+        }
+    }
+
+    private fun setUpListener(){
+        binding.ivEdit.setOnClickListener {
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
     }
 
@@ -83,9 +91,10 @@ class ProfileFragment : Fragment() {
             var data = it.data.nameSkill.split(",").map {
                 SkillModel(it)
             }
-            rv = SkillAdapter(data)
-            binding.recyclerviewSkillProfile.adapter = rv
-            binding.recyclerviewSkillProfile.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            rv = binding.recyclerviewSkillProfile
+            rv.adapter = SkillAdapter(data)
+            rv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+//
 
         })
     }

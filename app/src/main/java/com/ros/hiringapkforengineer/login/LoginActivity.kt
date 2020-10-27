@@ -12,6 +12,7 @@ import com.ros.hiringapkforengineer.API.ApiClient
 import com.ros.hiringapkforengineer.R
 import com.ros.hiringapkforengineer.bottomnav.BottomNavActivity
 import com.ros.hiringapkforengineer.databinding.ActivityLoginBinding
+import com.ros.hiringapkforengineer.form.FormEngineerActivity
 import com.ros.hiringapkforengineer.register.RegisterActivity
 import com.ros.hiringapkforengineer.utils.Constant
 import com.ros.hiringapkforengineer.utils.SharedPrefUtil
@@ -73,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.isRegisterLiveData.observe(this, Observer {
                     if (it) {
                         Toast.makeText(this, "To Form", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, RegisterActivity::class.java))
+                        startActivity(Intent(this, FormEngineerActivity::class.java))
                     }
                     else {
                         startActivity(Intent(this, BottomNavActivity::class.java))

@@ -12,6 +12,8 @@ import retrofit2.Response
 
 class ChooseStatusViewModel: ViewModel() {
     val isDetailResponse = MutableLiveData<ChooseStatusResponse>()
+    val isUpdateResponseReject = MutableLiveData<Boolean>()
+    val isUpdateResponseAccept = MutableLiveData<Boolean>()
 
     private lateinit var service: StatusApiService
     private lateinit var sharedpref: SharedPrefUtil
@@ -40,6 +42,36 @@ class ChooseStatusViewModel: ViewModel() {
             }
 
         })
+    }
+
+    fun updateReject(){
+        val id = sharedpref.getString(Constant.PREF_ID_HIRE)
+        service.getUpdate(id, "Reject").enqueue(object : Callback<Void>{
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                isUpdateResponseReject.value = true
+            }
+
+        })
+
+    }
+
+    fun updateAccept(){
+        val id = sharedpref.getString(Constant.PREF_ID_HIRE)
+        service.getUpdate(id, "Confirmed" ).enqueue(object : Callback<Void>{
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                isUpdateResponseAccept.value = true
+            }
+
+        })
+
     }
 
 }
