@@ -29,6 +29,7 @@ class ProfileViewModel : ViewModel() {
 
             override fun onResponse(call: Call<GetProfileResponse>, response: Response<GetProfileResponse>) {
                 isResponseGetProfile.value = response.body()
+                sharedpref.putString(Constant.PREF_ID_ENGINEER_PROFILE, response.body()?.data?.idEngineer)
             }
         })
     }

@@ -12,5 +12,6 @@ class Constant {
         val PREF_ID_HIRE = "PREF_ID_HIRE"
         val PREF_EMAIL = "PREF_EMAIL"
         val PREF_ID_ENGINEER_ACCOUNT = "PREF_ID_ENGINEER_ACCOUNT"
+        val PREF_STATUS = "PREF_STATUS"
     }
 }

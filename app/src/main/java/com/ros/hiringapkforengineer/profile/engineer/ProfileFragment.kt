@@ -22,6 +22,7 @@ import com.ros.hiringapkforengineer.home.detail.VPDetailEngineerAdapter
 import com.ros.hiringapkforengineer.home.skill.SkillAdapter
 import com.ros.hiringapkforengineer.home.skill.SkillModel
 import com.ros.hiringapkforengineer.login.LoginActivity
+import com.ros.hiringapkforengineer.profile.VPProfileAdapter
 import com.ros.hiringapkforengineer.profile.edit.EditProfileActivity
 import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 import com.squareup.picasso.Picasso
@@ -32,7 +33,7 @@ class ProfileFragment : Fragment() {
     private lateinit var sharedpref : SharedPrefUtil
     private lateinit var viewModel : ProfileViewModel
     private lateinit var rv : RecyclerView
-    private lateinit var vpadapter : VPDetailEngineerAdapter
+    private lateinit var vpadapter : VPProfileAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentProfileBinding.inflate(inflater)
@@ -46,7 +47,7 @@ class ProfileFragment : Fragment() {
         viewModel.getApiEngineerProfile()
         subscribeLiveData()
         setUpLogout()
-        vpadapter = VPDetailEngineerAdapter((activity as AppCompatActivity).supportFragmentManager)
+        vpadapter = VPProfileAdapter((activity as AppCompatActivity).supportFragmentManager)
         binding.viewProfile.adapter=vpadapter
         binding.tabProfile.setupWithViewPager(binding.viewProfile)
         setUpListener()

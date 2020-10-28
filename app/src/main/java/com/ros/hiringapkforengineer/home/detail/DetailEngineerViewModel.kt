@@ -25,6 +25,7 @@ class DetailEngineerViewModel : ViewModel() {
 
     fun callApi() {
         val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER)
+        Log.d("idEngDetailHome", "$idEngineer")
         service.getEngineerByID(idEngineer).enqueue(object : Callback<EngineerResponseID> {
             override fun onFailure(call: Call<EngineerResponseID>, t: Throwable) {
 

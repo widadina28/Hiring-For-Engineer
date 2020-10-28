@@ -60,6 +60,7 @@ class HomeViewModel : ViewModel() {
         })
 
         val idEngineerAccount = sharedpref.getString(Constant.PREF_ID_ENGINEER_ACCOUNT)
+        Log.d("idEngAcc", "$idEngineerAccount")
         if (idEngineerAccount==null){
             service2.getEngineerByIDAcc(sharedpref.getString(Constant.PREF_ID_ACC)).enqueue(object : Callback<GetProfileResponse>{
                 override fun onFailure(call: Call<GetProfileResponse>, t: Throwable) {

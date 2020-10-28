@@ -24,6 +24,7 @@ class ConfirmFragment : Fragment() {
     private lateinit var sharedpref: SharedPrefUtil
     private lateinit var viewModel: ConfirmViewModel
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentConfirmBinding.inflate(inflater)
         sharedpref = SharedPrefUtil(requireContext())
@@ -37,6 +38,7 @@ class ConfirmFragment : Fragment() {
         rv.adapter = ConfirmAdapter(arrayListOf(), object : ConfirmAdapter.onAdapterListener{
             override fun onClick(confirm: ConfirmModel) {
                 sharedpref.putString(Constant.PREF_ID_HIRE, confirm.id)
+                sharedpref.putString(Constant.PREF_STATUS, confirm.status)
                 startActivity(Intent(requireContext(), ChooseStatusActivity::class.java))
             }
 

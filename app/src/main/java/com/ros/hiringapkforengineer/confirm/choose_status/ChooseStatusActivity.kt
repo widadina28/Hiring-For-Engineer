@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ros.hiringapkforengineer.API.ApiClient
 import com.ros.hiringapkforengineer.R
 import com.ros.hiringapkforengineer.databinding.ActivityChooseStatusBinding
+import com.ros.hiringapkforengineer.utils.Constant
 import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 import com.squareup.picasso.Picasso
 
@@ -18,6 +19,7 @@ class ChooseStatusActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChooseStatusBinding
     private lateinit var viewModel: ChooseStatusViewModel
     private lateinit var sharedpref: SharedPrefUtil
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +31,18 @@ class ChooseStatusActivity : AppCompatActivity() {
         viewModel.setSharedPreference(sharedpref)
         if (service != null){
             viewModel.setServiceStatus(service)
-            viewModel.callApiStatus()
-            setUpListener()
-            subscribeLiveData()
         }
+        if (sharedpref.getString(Constant.PREF_STATUS).equals("Pending")){
+            binding.btnAccept.visibility = View.VISIBLE
+            binding.buttonReject.visibility = View.VISIBLE
+        } else {
+            binding.btnAccept.visibility = View.GONE
+            binding.buttonReject.visibility = View.GONE
+        }
+        setUpListener()
+        viewModel.callApiStatus()
+
+        subscribeLiveData()
     }
     private fun setUpListener(){
         binding.buttonReject.setOnClickListener {

@@ -25,7 +25,7 @@ class ExperienceProfileViewModel: ViewModel() {
     }
 
     fun callApiExpProfile() {
-        val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER)
+        val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER_PROFILE)
         service.getExperienceByID(idEngineer).enqueue(object : Callback<ExperienceResponse> {
             override fun onFailure(call: Call<ExperienceResponse>, t: Throwable) {
 

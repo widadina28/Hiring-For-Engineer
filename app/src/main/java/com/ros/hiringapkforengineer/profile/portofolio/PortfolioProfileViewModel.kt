@@ -25,7 +25,7 @@ class PortfolioProfileViewModel: ViewModel() {
     }
 
     fun callApiPort(){
-        val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER)
+        val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER_PROFILE)
         service.getPortofolioByID(idEngineer).enqueue(object : Callback<PortofolioResponse> {
             override fun onFailure(call: Call<PortofolioResponse>, t: Throwable) {
 

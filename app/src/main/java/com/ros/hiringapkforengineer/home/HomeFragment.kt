@@ -44,6 +44,8 @@ class HomeFragment : Fragment() {
             viewModel.setServiceEngineerAccount(service2)
         }
 
+        binding.nameAtHome.setText(sharedpref.getString(Constant.PREF_NAME))
+
         rv = binding.recyclerviewEngineer
         rv.adapter = EngineerAdapter(arrayListOf(), object : EngineerAdapter.OnAdapterListener {
             override fun onClick(engineer: EngineerModel) {
