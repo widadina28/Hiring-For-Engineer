@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 import com.ros.hiringapkforengineer.profile.engineer.Data
 
 data class GetProfileResponse(
-        @SerializedName("data")
+    @SerializedName("data")
     val `data`: Data,
-        @SerializedName("message")
+    @SerializedName("message")
     val message: String,
-        @SerializedName("success")
+    @SerializedName("success")
     val success: Boolean
 )

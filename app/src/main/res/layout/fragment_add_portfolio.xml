@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".profile.portofolio.post.AddPortfolioFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E5E5E5"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="15dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_portfolio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Portfolio"
+                        android:textSize="18dp"
+                        android:textColor="#1F2A36"
+                        android:fontFamily="@font/open_sans"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_name_portfolio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Name Portfolio"
+                        android:textSize="12dp"
+                        android:textColor="#9ea0a5"
+                        android:layout_below="@id/tv_portfolio"
+                        android:textFontWeight="400" />
+
+                    <EditText
+                        android:id="@+id/et_name_portfolio"
+                        style="@style/Widget.AppCompat.EditText"
+                        android:layout_width="343dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:hint="Name Portfolio"
+                        android:textSize="14dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="#252121"
+                        android:background="@drawable/new_edit_text"
+                        android:layout_below="@id/tv_name_portfolio"/>
+
+                    <TextView
+                        android:id="@+id/tv_description_port"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Description"
+                        android:textSize="12dp"
+                        android:textColor="#9ea0a5"
+                        android:layout_below="@id/et_name_portfolio"
+                        android:textFontWeight="400" />
+
+                    <EditText
+                        android:id="@+id/et_description"
+                        style="@style/Widget.AppCompat.EditText"
+                        android:layout_width="343dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:hint="Description"
+                        android:textSize="14dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="#252121"
+                        android:background="@drawable/new_edit_text"
+                        android:layout_below="@id/tv_description_port"/>
+
+                    <TextView
+                        android:id="@+id/tv_link_repo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Link Repository"
+                        android:textSize="12dp"
+                        android:textColor="#9ea0a5"
+                        android:layout_below="@id/et_description"
+                        android:textFontWeight="400" />
+
+                    <EditText
+                        android:id="@+id/et_link_repo"
+                        style="@style/Widget.AppCompat.EditText"
+                        android:layout_width="343dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:hint="Link Repository"
+                        android:textSize="14dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="#252121"
+                        android:background="@drawable/new_edit_text"
+                        android:layout_below="@id/tv_link_repo"/>
+
+                    <TextView
+                        android:id="@+id/tv_type_portfolio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Type Portfolio"
+                        android:textSize="12dp"
+                        android:textColor="#9ea0a5"
+                        android:layout_below="@id/et_link_repo"
+                        android:textFontWeight="400" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_type_portfolio"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/mobile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mobile Aplication"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:textSize="14dp"
+                            android:fontFamily="@font/open_sans"
+                            android:textColor="#9EA0A5"/>
+                        <RadioButton
+                            android:id="@+id/web"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Web Aplication"
+                            android:textSize="14dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/open_sans"
+                            android:textColor="#9EA0A5"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tv_upload_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Upload Image"
+                        android:textSize="12dp"
+                        android:textColor="#9ea0a5"
+                        android:layout_below="@id/radio_group"
+                        android:textFontWeight="400" />
+
+                    <ImageView
+                        android:id="@+id/img_upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_upload"
+                        android:layout_below="@id/tv_upload_image"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"/>
+
+                    <ImageView
+                        android:id="@+id/btn_add_port"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_btn_port"
+                        android:layout_below="@id/img_upload"
+                        android:layout_marginTop="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="20dp"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</layout>

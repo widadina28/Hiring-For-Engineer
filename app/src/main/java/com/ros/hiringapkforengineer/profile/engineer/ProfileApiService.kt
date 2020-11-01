@@ -7,5 +7,5 @@ import retrofit2.http.Path
 
 interface ProfileApiService {
     @GET("engineer/account/{id}")
-    fun getEngineerByIDAcc(@Path("id") id: String?) : Call<GetProfileResponse>
+    fun getEngineerByIDAcc(@Path("id") id: String?): Call<GetProfileResponse>
 }

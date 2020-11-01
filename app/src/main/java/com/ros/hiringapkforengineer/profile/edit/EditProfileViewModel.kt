@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EditProfileViewModel: ViewModel() {
+class EditProfileViewModel : ViewModel() {
 
     val isResponseUpdate = MutableLiveData<Boolean>()
     val isLocationSpinner = MutableLiveData<List<LocationModel>>()
@@ -26,42 +26,47 @@ class EditProfileViewModel: ViewModel() {
     private lateinit var service: EditProfileResponse
     private lateinit var sharedpref: SharedPrefUtil
 
-    fun setSharedPref(sharedpref: SharedPrefUtil){
+    fun setSharedPref(sharedpref: SharedPrefUtil) {
         this.sharedpref = sharedpref
     }
 
-    fun setServiceEdit(service: EditProfileResponse){
+    fun setServiceEdit(service: EditProfileResponse) {
         this.service = service
     }
 
-    fun updateEngineer(name: RequestBody,
-                       job: RequestBody,
-                       loc: RequestBody,
-                       cost: RequestBody,
-                       rate: RequestBody,
-                       desc: RequestBody,
-                       image: MultipartBody.Part?,
-                       status: RequestBody,
-                       id: RequestBody){
+    fun updateEngineer(
+        name: RequestBody,
+        job: RequestBody,
+        loc: RequestBody,
+        cost: RequestBody,
+        rate: RequestBody,
+        desc: RequestBody,
+        image: MultipartBody.Part?,
+        status: RequestBody,
+        id: RequestBody
+    ) {
         val idEng = sharedpref.getString(Constant.PREF_ID_ENGINEER_ACCOUNT)
-        Log.d("id", "$idEng")
-        service.engineerUpdate(idEng, name, job, loc, cost, rate, desc, image, status, id).enqueue(object : Callback<Void>{
-            override fun onFailure(call: Call<Void>, t: Throwable) {
+        service.engineerUpdate(idEng, name, job, loc, cost, rate, desc, image, status, id)
+            .enqueue(object : Callback<Void> {
+                override fun onFailure(call: Call<Void>, t: Throwable) {
 
-            }
+                }
 
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                isResponseUpdate.value = true
-            }
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    isResponseUpdate.value = true
+                }
 
-        })
+            })
     }
 
-    fun getDataProfile(){
+    fun getDataProfile() {
         val id = sharedpref.getString(Constant.PREF_ID_ACC)
-        service.getEngineerByIDAcc(id).enqueue(object : Callback<GetProfileResponse>{
-            override fun onResponse(call: Call<GetProfileResponse>, response: Response<GetProfileResponse>) {
-               isResponseGetProfile.value = response.body()
+        service.getEngineerByIDAcc(id).enqueue(object : Callback<GetProfileResponse> {
+            override fun onResponse(
+                call: Call<GetProfileResponse>,
+                response: Response<GetProfileResponse>
+            ) {
+                isResponseGetProfile.value = response.body()
             }
 
             override fun onFailure(call: Call<GetProfileResponse>, t: Throwable) {
@@ -95,8 +100,8 @@ class EditProfileViewModel: ViewModel() {
             }
 
             override fun onResponse(
-                    call: Call<LocationResponse>,
-                    response: Response<LocationResponse>
+                call: Call<LocationResponse>,
+                response: Response<LocationResponse>
             ) {
                 val listLoc = response.body()?.data?.map {
                     LocationModel(it.idLoc.orEmpty(), it.nameLoc.orEmpty())

@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FormSkillViewModel: ViewModel() {
+class FormSkillViewModel : ViewModel() {
     val isListSkillResponse = MutableLiveData<List<SkillModel>>()
     private lateinit var sharedpref: SharedPrefUtil
     private lateinit var service: PostProfileApiService
@@ -18,13 +18,13 @@ class FormSkillViewModel: ViewModel() {
         this.sharedpref = sharedpref
     }
 
-    fun setService(service: PostProfileApiService){
+    fun setService(service: PostProfileApiService) {
         this.service = service
     }
 
-    fun postSkill1(id: String){
+    fun postSkill1(id: String) {
         val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER)
-        service.postSkill(id, idEngineer).enqueue(object : Callback<SkillResponse>{
+        service.postSkill(id, idEngineer).enqueue(object : Callback<SkillResponse> {
             override fun onFailure(call: Call<SkillResponse>, t: Throwable) {
 
             }
@@ -36,9 +36,9 @@ class FormSkillViewModel: ViewModel() {
         })
     }
 
-    fun postSkill2(id: String){
+    fun postSkill2(id: String) {
         val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER)
-        service.postSkill(id, idEngineer).enqueue(object : Callback<SkillResponse>{
+        service.postSkill(id, idEngineer).enqueue(object : Callback<SkillResponse> {
             override fun onFailure(call: Call<SkillResponse>, t: Throwable) {
 
             }
@@ -50,9 +50,9 @@ class FormSkillViewModel: ViewModel() {
         })
     }
 
-    fun postSkill3(id: String){
+    fun postSkill3(id: String) {
         val idEngineer = sharedpref.getString(Constant.PREF_ID_ENGINEER)
-        service.postSkill(id, idEngineer).enqueue(object : Callback<SkillResponse>{
+        service.postSkill(id, idEngineer).enqueue(object : Callback<SkillResponse> {
             override fun onFailure(call: Call<SkillResponse>, t: Throwable) {
 
             }
@@ -64,8 +64,8 @@ class FormSkillViewModel: ViewModel() {
         })
     }
 
-    fun spinnerSkill(){
-        service.getListSkill().enqueue(object :Callback<ListSkillResponse>{
+    fun spinnerSkill() {
+        service.getListSkill().enqueue(object : Callback<ListSkillResponse> {
             override fun onFailure(call: Call<ListSkillResponse>, t: Throwable) {
 
             }

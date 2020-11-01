@@ -43,6 +43,7 @@ class EditProfileActivity : AppCompatActivity() {
 
 
     private var img: MultipartBody.Part? = null
+
     companion object {
         private val IMAGE_PICK_CODE = 1000
         val PERMISSION_CODE = 1001
@@ -56,7 +57,7 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
         viewModel.setSharedPref(sharedpref)
 
-        if (service != null){
+        if (service != null) {
             viewModel.setServiceEdit(service)
         }
         viewModel.getDataProfile()
@@ -67,18 +68,24 @@ class EditProfileActivity : AppCompatActivity() {
         subscribelLiveData()
     }
 
-    private fun subscribelLiveData(){
+    private fun subscribelLiveData() {
         viewModel.isJobSpinner.observe(this, Observer {
             val spinnerJob = binding.spinnerJob as Spinner
-            spinnerJob.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
-                it.nameFreelance
-            })
-            spinnerJob.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            spinnerJob.adapter =
+                ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
+                    it.nameFreelance
+                })
+            spinnerJob.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
 
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    position: Int,
+                    p3: Long
+                ) {
                     selectedJob = it[position].idFreelance.toString()
                 }
 
@@ -86,26 +93,31 @@ class EditProfileActivity : AppCompatActivity() {
         })
         viewModel.isLocationSpinner.observe(this, Observer {
             val spinnerLoc = binding.spinnerLocation as Spinner
-            spinnerLoc.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
-                it.nameLoc
-            })
-            spinnerLoc.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            spinnerLoc.adapter =
+                ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
+                    it.nameLoc
+                })
+            spinnerLoc.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
 
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    position: Int,
+                    p3: Long
+                ) {
                     selectedLoc = it[position].idLoc.toString()
                 }
 
             }
         })
         viewModel.isResponseUpdate.observe(this, Observer {
-            if (it){
+            if (it) {
                 Toast.makeText(this, "Data Updated!", Toast.LENGTH_LONG).show()
                 finish()
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Failed!", Toast.LENGTH_LONG).show()
             }
 
@@ -113,17 +125,18 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.isResponseGetProfile.observe(this, Observer {
             binding.etName.setText(it.data.nameEngineer)
             binding.etDescription.setText(it.data.descriptionEngineer)
-            Picasso.get().load("http://3.80.45.131:8080/uploads/"+ it.data.image)
-                    .placeholder(R.drawable.ic_baseline_person_24)
-                    .into(binding.circleImageView3)
+            Picasso.get().load("http://3.80.45.131:8080/uploads/" + it.data.image)
+                .placeholder(R.drawable.ic_baseline_person_24)
+                .into(binding.circleImageView3)
         })
 
     }
 
-    private fun spinnerStatus(){
+    private fun spinnerStatus() {
         val spinnerStatus = binding.spinnerStatus as Spinner
         var status = arrayOf("Freelance", "Fulltime")
-        spinnerStatus.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, status)
+        spinnerStatus.adapter =
+            ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, status)
         spinnerStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
@@ -137,17 +150,16 @@ class EditProfileActivity : AppCompatActivity() {
 
     }
 
-    private fun setUpLIstener(){
+    private fun setUpLIstener() {
         binding.btnEditPhoto.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     requestPermissions(permissions, PERMISSION_CODE)
-                }
-                else {
+                } else {
                     pickImgGallery()
                 }
-            } else {22
+            } else {
                 pickImgGallery()
             }
         }
@@ -155,36 +167,35 @@ class EditProfileActivity : AppCompatActivity() {
         binding.btnUpdate.setOnClickListener {
             val id = sharedpref.getString(Constant.PREF_ID_ACC)
             viewModel.updateEngineer(
-                    createPartFromString(binding.etName.text.toString()),
-                    createPartFromString(selectedJob),
-                    createPartFromString(selectedLoc),
-                    createPartFromString("5000000"),
-                    createPartFromString("4.5"),
-                    createPartFromString(binding.etDescription.text.toString()),
-                    img,
-                    createPartFromString(selectedStatus),
-                    createPartFromString("$id")
+                createPartFromString(binding.etName.text.toString()),
+                createPartFromString(selectedJob),
+                createPartFromString(selectedLoc),
+                createPartFromString("5000000"),
+                createPartFromString("4.5"),
+                createPartFromString(binding.etDescription.text.toString()),
+                img,
+                createPartFromString(selectedStatus),
+                createPartFromString("$id")
             )
         }
     }
 
-    private fun pickImgGallery(){
+    private fun pickImgGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         when (requestCode) {
-           PERMISSION_CODE -> {
-                if (grantResults.size > 0 && grantResults [0] == PackageManager.PERMISSION_GRANTED) {
+            PERMISSION_CODE -> {
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     pickImgGallery()
-                }
-                else {
+                } else {
                     Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -202,8 +213,9 @@ class EditProfileActivity : AppCompatActivity() {
             val inputStream = contentResolver.openInputStream(data?.data!!)
             val reqFile: RequestBody? = inputStream?.readBytes()?.toRequestBody(mediaTypeImg)
             img = reqFile?.let { it1 ->
-                MultipartBody.Part.createFormData("image", file.name,
-                        it1
+                MultipartBody.Part.createFormData(
+                    "image", file.name,
+                    it1
                 )
             }
 
@@ -215,7 +227,7 @@ class EditProfileActivity : AppCompatActivity() {
         var result: String? = null
         val proj = arrayOf(MediaStore.Images.Media.DATA)
         val cursor: Cursor? =
-                uri?.let { context.contentResolver.query(it, proj, null, null, null) }
+            uri?.let { context.contentResolver.query(it, proj, null, null, null) }
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 val column_index = cursor.getColumnIndexOrThrow(proj[0])
@@ -233,6 +245,6 @@ class EditProfileActivity : AppCompatActivity() {
     private fun createPartFromString(json: String): RequestBody {
         val mediaType = "multipart/form-data".toMediaType()
         return json
-                .toRequestBody(mediaType)
+            .toRequestBody(mediaType)
     }
 }

@@ -6,10 +6,12 @@ import retrofit2.http.*
 
 interface StatusApiService {
     @GET("hire/idhire/{id}")
-    fun getHireByIDHire(@Path("id")id:String?): Call<ChooseStatusResponse>
+    fun getHireByIDHire(@Path("id") id: String?): Call<ChooseStatusResponse>
 
     @FormUrlEncoded
     @PATCH("hire/{id}")
-    fun getUpdate(@Path("id")id:String?,
-    @Field("status") status:String): Call<Void>
+    fun getUpdate(
+        @Path("id") id: String?,
+        @Field("status") status: String
+    ): Call<Void>
 }

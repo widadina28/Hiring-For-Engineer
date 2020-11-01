@@ -25,17 +25,22 @@ class ConfirmFragment : Fragment() {
     private lateinit var viewModel: ConfirmViewModel
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentConfirmBinding.inflate(inflater)
         sharedpref = SharedPrefUtil(requireContext())
-        val service = ApiClient.getApiClient(requireContext())?.create(ConfirmApiService::class.java)
+        val service =
+            ApiClient.getApiClient(requireContext())?.create(ConfirmApiService::class.java)
         viewModel = ViewModelProvider(this).get(ConfirmViewModel::class.java)
         viewModel.setSharedPreferences(sharedpref)
-        if (service!= null){
+        if (service != null) {
             viewModel.setServiceConfirm(service)
         }
         rv = binding.recyclerConfirm
-        rv.adapter = ConfirmAdapter(arrayListOf(), object : ConfirmAdapter.onAdapterListener{
+        rv.adapter = ConfirmAdapter(arrayListOf(), object : ConfirmAdapter.onAdapterListener {
             override fun onClick(confirm: ConfirmModel) {
                 sharedpref.putString(Constant.PREF_ID_HIRE, confirm.id)
                 sharedpref.putString(Constant.PREF_STATUS, confirm.status)
@@ -55,7 +60,7 @@ class ConfirmFragment : Fragment() {
         viewModel.callApiConfirm()
     }
 
-    private fun subscribeLiveData(){
+    private fun subscribeLiveData() {
         viewModel.isConfirmResponse.observe(viewLifecycleOwner, Observer {
             (binding.recyclerConfirm.adapter as ConfirmAdapter).addList(it)
         })

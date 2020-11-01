@@ -39,6 +39,7 @@ class PortofolioFragment : Fragment() {
 
         viewModel.callApiPort()
         subscribeLiveData()
+
         return binding.root
     }
     private fun subscribeLiveData(){

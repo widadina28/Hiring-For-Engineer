@@ -34,7 +34,7 @@ class FormSkillActivity : AppCompatActivity() {
         val service = ApiClient.getApiClient(this)?.create(PostProfileApiService::class.java)
         viewModel = ViewModelProvider(this).get(FormSkillViewModel::class.java)
         viewModel.setSharedPref(sharedpref)
-        if (service !=null){
+        if (service != null) {
             viewModel.setService(service)
         }
         setUpListener()
@@ -42,7 +42,7 @@ class FormSkillActivity : AppCompatActivity() {
         subscribeLiveData()
     }
 
-    fun setUpListener(){
+    fun setUpListener() {
         binding.btnSubmit.setOnClickListener {
             viewModel.postSkill1("$selectedSkill1")
             viewModel.postSkill2("$selectedSkill2")
@@ -52,46 +52,65 @@ class FormSkillActivity : AppCompatActivity() {
             finish()
         }
     }
-    fun subscribeLiveData(){
+
+    fun subscribeLiveData() {
         viewModel.isListSkillResponse.observe(this, Observer {
             val spinnerSkill1 = binding.spinnerSkill1 as Spinner
             val spinnerSkill2 = binding.spinnerSkill2 as Spinner
             val spinnerSkill3 = binding.spinnerSkill3 as Spinner
-            spinnerSkill1.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
-                it.nameSkill
-            })
-            spinnerSkill2.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
-                it.nameSkill
-            })
-            spinnerSkill3.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
-                it.nameSkill
-            })
-            spinnerSkill1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            spinnerSkill1.adapter =
+                ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
+                    it.nameSkill
+                })
+            spinnerSkill2.adapter =
+                ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
+                    it.nameSkill
+                })
+            spinnerSkill3.adapter =
+                ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, it.map {
+                    it.nameSkill
+                })
+            spinnerSkill1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
 
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    position: Int,
+                    p3: Long
+                ) {
                     selectedSkill1 = it[position].idSkill.toString()
                 }
 
             }
-            spinnerSkill2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            spinnerSkill2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
 
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    position: Int,
+                    p3: Long
+                ) {
                     selectedSkill2 = it[position].idSkill.toString()
                 }
 
             }
-            spinnerSkill3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            spinnerSkill3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
 
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    position: Int,
+                    p3: Long
+                ) {
                     selectedSkill3 = it[position].idSkill.toString()
                 }
 

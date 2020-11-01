@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SearchViewModel: ViewModel() {
+class SearchViewModel : ViewModel() {
     val isResponseAdapter = MutableLiveData<List<EngineerModel>>()
 
     private lateinit var service: HomeApiService
@@ -33,18 +33,16 @@ class SearchViewModel: ViewModel() {
             }
 
             override fun onResponse(
-                    call: Call<EngineerResponse>,
-                    response: Response<EngineerResponse>
+                call: Call<EngineerResponse>,
+                response: Response<EngineerResponse>
             ) {
-                Log.d("response get engineer", "${response.body()}")
                 val list = response.body()?.data?.map {
                     EngineerModel(it.idEngineer.orEmpty(), it.nameEngineer.orEmpty(),
-                            it.nameFreelance.orEmpty(), it.image.orEmpty(),
-                            it.nameSkill.split(",").map {
-                                SkillModel(it)
-                            })
+                        it.nameFreelance.orEmpty(), it.image.orEmpty(),
+                        it.nameSkill.split(",").map {
+                            SkillModel(it)
+                        })
                 } ?: listOf()
-                Log.d("list", "$list")
                 isResponseAdapter.value = list
             }
         })

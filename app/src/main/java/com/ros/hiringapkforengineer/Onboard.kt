@@ -15,12 +15,12 @@ class Onboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-       binding = DataBindingUtil.setContentView(this, R.layout.activity_onboard)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_onboard)
         binding.ivRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
         binding.ivLogin.setOnClickListener {
-            Toast.makeText(this,"Login", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Login", Toast.LENGTH_LONG).show()
             startActivity(Intent(this, LoginActivity::class.java))
         }
     }

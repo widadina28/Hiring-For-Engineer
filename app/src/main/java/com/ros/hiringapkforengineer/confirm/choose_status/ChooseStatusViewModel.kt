@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ChooseStatusViewModel: ViewModel() {
+class ChooseStatusViewModel : ViewModel() {
     val isDetailResponse = MutableLiveData<ChooseStatusResponse>()
     val isUpdateResponseReject = MutableLiveData<Boolean>()
     val isUpdateResponseAccept = MutableLiveData<Boolean>()
@@ -18,17 +18,17 @@ class ChooseStatusViewModel: ViewModel() {
     private lateinit var service: StatusApiService
     private lateinit var sharedpref: SharedPrefUtil
 
-    fun setSharedPreference(sharedpref: SharedPrefUtil){
+    fun setSharedPreference(sharedpref: SharedPrefUtil) {
         this.sharedpref = sharedpref
     }
 
-    fun setServiceStatus(service: StatusApiService){
+    fun setServiceStatus(service: StatusApiService) {
         this.service = service
     }
 
-    fun callApiStatus(){
+    fun callApiStatus() {
         val id = sharedpref.getString(Constant.PREF_ID_HIRE)
-        service.getHireByIDHire(id).enqueue(object : Callback<ChooseStatusResponse>{
+        service.getHireByIDHire(id).enqueue(object : Callback<ChooseStatusResponse> {
             override fun onFailure(call: Call<ChooseStatusResponse>, t: Throwable) {
 
             }
@@ -44,9 +44,9 @@ class ChooseStatusViewModel: ViewModel() {
         })
     }
 
-    fun updateReject(){
+    fun updateReject() {
         val id = sharedpref.getString(Constant.PREF_ID_HIRE)
-        service.getUpdate(id, "Reject").enqueue(object : Callback<Void>{
+        service.getUpdate(id, "Reject").enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
 
             }
@@ -59,9 +59,9 @@ class ChooseStatusViewModel: ViewModel() {
 
     }
 
-    fun updateAccept(){
+    fun updateAccept() {
         val id = sharedpref.getString(Constant.PREF_ID_HIRE)
-        service.getUpdate(id, "Confirmed" ).enqueue(object : Callback<Void>{
+        service.getUpdate(id, "Confirmed").enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
 
             }

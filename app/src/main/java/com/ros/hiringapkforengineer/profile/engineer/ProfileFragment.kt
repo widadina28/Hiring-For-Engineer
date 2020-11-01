@@ -29,65 +29,73 @@ import com.squareup.picasso.Picasso
 
 
 class ProfileFragment : Fragment() {
-    private lateinit var binding : FragmentProfileBinding
-    private lateinit var sharedpref : SharedPrefUtil
-    private lateinit var viewModel : ProfileViewModel
-    private lateinit var rv : RecyclerView
-    private lateinit var vpadapter : VPProfileAdapter
+    private lateinit var binding: FragmentProfileBinding
+    private lateinit var sharedpref: SharedPrefUtil
+    private lateinit var viewModel: ProfileViewModel
+    private lateinit var rv: RecyclerView
+    private lateinit var vpadapter: VPProfileAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentProfileBinding.inflate(inflater)
         sharedpref = SharedPrefUtil(requireContext())
-        val service = ApiClient.getApiClient(requireContext())?.create(ProfileApiService::class.java)
+        val service =
+            ApiClient.getApiClient(requireContext())?.create(ProfileApiService::class.java)
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         viewModel.setSharedPreference(sharedpref)
-        if (service != null){
+        if (service != null) {
             viewModel.setServiceProfile(service)
         }
         viewModel.getApiEngineerProfile()
         subscribeLiveData()
         setUpLogout()
         vpadapter = VPProfileAdapter((activity as AppCompatActivity).supportFragmentManager)
-        binding.viewProfile.adapter=vpadapter
+        binding.viewProfile.adapter = vpadapter
         binding.tabProfile.setupWithViewPager(binding.viewProfile)
         setUpListener()
         return binding.root
     }
-    private fun setUpLogout(){
+
+    private fun setUpLogout() {
         binding.tvLogout.setOnClickListener {
-           dialog()
+            dialog()
         }
     }
 
-    private fun setUpListener(){
+    private fun setUpListener() {
         binding.ivEdit.setOnClickListener {
             startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
     }
 
-    private fun dialog(){
+    private fun dialog() {
         val dialog = AlertDialog.Builder(requireContext())
-                .setTitle("Are You Sure?")
-                .setPositiveButton("Logout"){ dialog: DialogInterface?, which: Int ->
-                    sharedpref.clear()
-                    val intent=Intent(requireActivity(), LoginActivity::class.java)
-                    startActivity(intent)
-                }
-                .setNegativeButton("Cancel")  {dialogInterface, i -> dialogInterface.dismiss()
-                }
+            .setTitle("Are You Sure?")
+            .setPositiveButton("Logout") { dialog: DialogInterface?, which: Int ->
+                sharedpref.clear()
+                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                startActivity(intent)
+            }
+            .setNegativeButton("Cancel") { dialogInterface, i ->
+                dialogInterface.dismiss()
+            }
         dialog.show()
     }
 
-    private fun subscribeLiveData(){
+    private fun subscribeLiveData() {
         viewModel.isResponseGetProfile.observe(viewLifecycleOwner, Observer {
-            binding.nameProfile.text=it.data.nameEngineer
-            binding.jobProfile.text=it.data.nameFreelance
-            binding.locationProfile.text=it.data.nameLoc
-            binding.statusProfile.text=it.data.status
-            binding.descriptionProfile.text=it.data.descriptionEngineer
-            Picasso.get().load("http://3.80.45.131:8080/uploads/"+ it.data.image).placeholder(R.drawable.ic_baseline_person_24)
-                    .into(binding.ivProfile)
-            binding.emailProfile.text=it.data.emailAccount
+            binding.nameProfile.text = it.data.nameEngineer
+            binding.jobProfile.text = it.data.nameFreelance
+            binding.locationProfile.text = it.data.nameLoc
+            binding.statusProfile.text = it.data.status
+            binding.descriptionProfile.text = it.data.descriptionEngineer
+            Picasso.get().load("http://3.80.45.131:8080/uploads/" + it.data.image)
+                .placeholder(R.drawable.ic_baseline_person_24)
+                .into(binding.ivProfile)
+            binding.emailProfile.text = it.data.emailAccount
 
             var data = it.data.nameSkill.split(",").map {
                 SkillModel(it)

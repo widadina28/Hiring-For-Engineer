@@ -8,7 +8,7 @@ import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class ViewModelLogin: ViewModel(), CoroutineScope {
+class ViewModelLogin : ViewModel(), CoroutineScope {
     val isLoginLiveData = MutableLiveData<Boolean>()
     val isRegisterLiveData = MutableLiveData<Boolean>()
     val isToastLogin = MutableLiveData<Boolean>()
@@ -24,11 +24,11 @@ class ViewModelLogin: ViewModel(), CoroutineScope {
         this.sharedpref = sharedpref
     }
 
-    fun setLoginService(servis: LoginApiServis){
+    fun setLoginService(servis: LoginApiServis) {
         this.service = servis
     }
 
-    fun callApi(email: String, password: String){
+    fun callApi(email: String, password: String) {
         launch {
             val response = withContext(Dispatchers.IO) {
                 try {
@@ -39,30 +39,27 @@ class ViewModelLogin: ViewModel(), CoroutineScope {
                     e.printStackTrace()
                 }
             }
-            if(response is LoginResponse){
+            if (response is LoginResponse) {
                 isResponseLogin.value = true
-                if (email.isNotEmpty() && password.isNotEmpty()){
+                if (email.isNotEmpty() && password.isNotEmpty()) {
                     isToastLogin.value = true
                     if (response.data.role == "engineer") {
                         sharedpref.putString(Constant.PREF_TOKEN, response.data.token)
-                        val a= sharedpref.putBoolean(Constant.PREF_IS_LOGIN, true)
-                        Log.d("sharedpref login", "$a")
+                        val a = sharedpref.putBoolean(Constant.PREF_IS_LOGIN, true)
                         sharedpref.putString(Constant.PREF_ID_ACC, response.data.idAccount)
                         sharedpref.putString(Constant.PREF_NAME, response.data.nameAccount)
-                        val b = sharedpref.putString(Constant.PREF_EMAIL, response.data.emailAccount)
-                        Log.d("email", "$b")
+                        val b =
+                            sharedpref.putString(Constant.PREF_EMAIL, response.data.emailAccount)
                         val reg = sharedpref.getBoolean(Constant.PREF_REGISTER)
                         isLoginLiveData.value = true
                         isRegisterLiveData.value = reg
                     } else {
                         isLoginLiveData.value = false
                     }
-                }
-                else {
+                } else {
                     isToastLogin.value = false
                 }
-            }
-            else {
+            } else {
                 isResponseLogin.value = false
             }
         }

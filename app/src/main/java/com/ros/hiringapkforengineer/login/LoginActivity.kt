@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         subscribeLiveData()
     }
 
-    private fun setUpListener(){
+    private fun setUpListener() {
         binding.btnLogin.setOnClickListener {
             viewModel.callApi(binding.etEmail.text.toString(), binding.etPassword.text.toString())
 
@@ -52,19 +52,17 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (sharedpref.getBoolean(Constant.PREF_IS_LOGIN))
-        {
+        if (sharedpref.getBoolean(Constant.PREF_IS_LOGIN)) {
             startActivity(Intent(this, BottomNavActivity::class.java))
             finish()
         }
     }
 
-    private fun subscribeLiveData(){
+    private fun subscribeLiveData() {
         viewModel.isResponseLogin.observe(this, Observer {
             if (it) {
 
-            }
-            else {
+            } else {
                 Toast.makeText(this, "FAILED", Toast.LENGTH_SHORT).show()
             }
         })
@@ -73,10 +71,8 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                 viewModel.isRegisterLiveData.observe(this, Observer {
                     if (it) {
-                        Toast.makeText(this, "To Form", Toast.LENGTH_LONG).show()
                         startActivity(Intent(this, FormEngineerActivity::class.java))
-                    }
-                    else {
+                    } else {
                         startActivity(Intent(this, BottomNavActivity::class.java))
                         finish()
                     }

@@ -7,7 +7,7 @@ import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class RegisterViewModel: ViewModel(), CoroutineScope {
+class RegisterViewModel : ViewModel(), CoroutineScope {
     val isRegisterLivedata = MutableLiveData<Boolean>()
 
     private lateinit var service: RegisterApiService
@@ -16,15 +16,15 @@ class RegisterViewModel: ViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
 
-    fun setSharedPreference(sharedpref: SharedPrefUtil){
-        this.sharedpref =sharedpref
+    fun setSharedPreference(sharedpref: SharedPrefUtil) {
+        this.sharedpref = sharedpref
     }
 
-    fun setRegisterService(service: RegisterApiService){
+    fun setRegisterService(service: RegisterApiService) {
         this.service = service
     }
 
-    fun callApi(name: String, email: String, password:String){
+    fun callApi(name: String, email: String, password: String) {
         launch {
             val response = withContext(Dispatchers.IO) {
                 try {

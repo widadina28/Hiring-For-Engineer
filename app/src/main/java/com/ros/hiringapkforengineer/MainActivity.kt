@@ -12,8 +12,8 @@ import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val timesplash : Long = 3000
-    lateinit var sharedpref : SharedPrefUtil
+    private val timesplash: Long = 3000
+    lateinit var sharedpref: SharedPrefUtil
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +28,7 @@ class MainActivity : AppCompatActivity() {
             if (token != null) {
                 startActivity(Intent(this, BottomNavActivity::class.java))
                 finish()
-            }
-            else {
+            } else {
                 startActivity(Intent(this, Onboard::class.java))
             }
         }, timesplash)

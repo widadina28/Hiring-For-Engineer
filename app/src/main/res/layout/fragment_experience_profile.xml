@@ -8,10 +8,21 @@
         android:layout_height="match_parent"
         tools:context=".home.experience.ExperienceFragment">
 
+        <Button
+            android:id="@+id/btn_add_experience"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="Add"
+            android:backgroundTint="#FBB017"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_experience"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/btn_add_experience"/>
 
     </RelativeLayout>
 

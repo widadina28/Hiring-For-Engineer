@@ -6,5 +6,5 @@ import retrofit2.http.Path
 
 interface ConfirmApiService {
     @GET("hire/{id}")
-    fun getHireByID(@Path("id")id:String?): Call<AllConfirmResponse>
+    fun getHireByID(@Path("id") id: String?): Call<AllConfirmResponse>
 }

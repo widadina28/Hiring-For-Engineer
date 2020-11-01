@@ -74,32 +74,6 @@ class HomeViewModel : ViewModel() {
 
             })
         }
-//        else {
-//            service.getAllEngineer().enqueue(object : Callback<EngineerResponse> {
-//                override fun onFailure(call: Call<EngineerResponse>, t: Throwable) {
-//                    Log.e("Home", t.message ?: "error")
-//                }
-//
-//                override fun onResponse(
-//                    call: Call<EngineerResponse>,
-//                    response: Response<EngineerResponse>
-//                ) {
-//                    Log.d("response get engineer", "${response.body()}")
-//                    val list = response.body()?.data?.map {
-//                        it.nameSkill.split(",").map {
-//                            SkillModel(it)
-//                            Log.d("it", "$it")
-//                        }
-//                        EngineerModel(it.idEngineer.orEmpty(), it.nameEngineer.orEmpty(),
-//                            it.nameFreelance.orEmpty(), it.image.orEmpty(),
-//                            it.nameSkill.split(",").map {
-//                                SkillModel(it)
-//                            })
-//                    } ?: listOf()
-//                    isResponseAdapter.value = list
-//                }
-//            })
-//        }
 
         }
 

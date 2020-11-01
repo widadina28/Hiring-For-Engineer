@@ -3,11 +3,11 @@ package com.ros.hiringapkforengineer.profile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.ros.hiringapkforengineer.profile.experience.ExperienceProfileFragment
-import com.ros.hiringapkforengineer.profile.portofolio.PortfolioProfileFragment
+import com.ros.hiringapkforengineer.profile.experience.get.ExperienceProfileFragment
+import com.ros.hiringapkforengineer.profile.portofolio.get.PortfolioProfileFragment
 
-class VPProfileAdapter(fragment: FragmentManager):
-FragmentStatePagerAdapter(fragment, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+class VPProfileAdapter(fragment: FragmentManager) :
+    FragmentStatePagerAdapter(fragment, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     val fragment = arrayOf(PortfolioProfileFragment(), ExperienceProfileFragment())
 
     override fun getItem(position: Int): Fragment {

@@ -29,10 +29,10 @@ class ChooseStatusActivity : AppCompatActivity() {
         val service = ApiClient.getApiClient(this)?.create(StatusApiService::class.java)
         viewModel = ViewModelProvider(this).get(ChooseStatusViewModel::class.java)
         viewModel.setSharedPreference(sharedpref)
-        if (service != null){
+        if (service != null) {
             viewModel.setServiceStatus(service)
         }
-        if (sharedpref.getString(Constant.PREF_STATUS).equals("Pending")){
+        if (sharedpref.getString(Constant.PREF_STATUS).equals("Pending")) {
             binding.btnAccept.visibility = View.VISIBLE
             binding.buttonReject.visibility = View.VISIBLE
         } else {
@@ -44,7 +44,8 @@ class ChooseStatusActivity : AppCompatActivity() {
 
         subscribeLiveData()
     }
-    private fun setUpListener(){
+
+    private fun setUpListener() {
         binding.buttonReject.setOnClickListener {
             viewModel.updateReject()
         }
@@ -53,7 +54,7 @@ class ChooseStatusActivity : AppCompatActivity() {
         }
     }
 
-    private fun subscribeLiveData(){
+    private fun subscribeLiveData() {
         viewModel.isDetailResponse.observe(this, Observer {
             binding.nameCompanyHire.text = it.data.nameCompany
             binding.nameProjectHire.text = it.data.projectName
@@ -63,14 +64,14 @@ class ChooseStatusActivity : AppCompatActivity() {
                 .into(binding.ivProjectHire)
         })
         viewModel.isUpdateResponseReject.observe(this, Observer {
-            if (it){
+            if (it) {
                 Toast.makeText(this, "You Reject The Project", Toast.LENGTH_LONG).show()
                 finish()
             }
 
         })
         viewModel.isUpdateResponseAccept.observe(this, Observer {
-            if (it){
+            if (it) {
                 Toast.makeText(this, "You Accept The Project", Toast.LENGTH_LONG).show()
                 finish()
             }

@@ -38,8 +38,6 @@ class EngineerAdapter (var dataEngineer:ArrayList<EngineerModel>, var listener:O
         val childLayoutManager = LinearLayoutManager(
             holder.view.recycler_skill.context, RecyclerView.HORIZONTAL, false)
 
-//        childLayoutManager.initialPrefetchItemCount = 4
-
         holder.view.recycler_skill.apply {
             adapter = SkillAdapter(engineer.skill)
             layoutManager = childLayoutManager

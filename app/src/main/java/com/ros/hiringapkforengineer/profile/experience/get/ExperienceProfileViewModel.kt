@@ -1,4 +1,4 @@
-package com.ros.hiringapkforengineer.profile.experience
+package com.ros.hiringapkforengineer.profile.experience.get
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +11,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ExperienceProfileViewModel: ViewModel() {
+class ExperienceProfileViewModel : ViewModel() {
     val isResponseExperience = MutableLiveData<List<ExperienceModel>>()
+    val isResponseDelete = MutableLiveData<Void>()
     private lateinit var service: ExperienceApiService
     private lateinit var sharedpref: SharedPrefUtil
 
@@ -31,12 +32,30 @@ class ExperienceProfileViewModel: ViewModel() {
 
             }
 
-            override fun onResponse(call: Call<ExperienceResponse>, response: Response<ExperienceResponse>) {
+            override fun onResponse(
+                call: Call<ExperienceResponse>,
+                response: Response<ExperienceResponse>
+            ) {
                 val list = response.body()?.data?.map {
-                    ExperienceModel(it.idExperience.orEmpty(), it.position.orEmpty(), it.companyName.orEmpty(),
-                        it.description.orEmpty())
+                    ExperienceModel(
+                        it.idExperience.orEmpty(), it.position.orEmpty(), it.companyName.orEmpty(),
+                        it.description.orEmpty()
+                    )
                 } ?: listOf()
                 isResponseExperience.value = list
+            }
+
+        })
+    }
+
+    fun delete(id: String) {
+        service.deleteexperience(id).enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                isResponseDelete.value = response.body()
             }
 
         })

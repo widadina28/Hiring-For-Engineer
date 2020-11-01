@@ -26,16 +26,16 @@ import com.ros.hiringapkforengineer.utils.SharedPrefUtil
 
 
 class SearchFragment : Fragment() {
-  private lateinit var binding: FragmentSearchBinding
+    private lateinit var binding: FragmentSearchBinding
     private lateinit var rv: RecyclerView
     private lateinit var sharedpref: SharedPrefUtil
     private lateinit var viewModel: SearchViewModel
     private lateinit var sv: SearchView
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater)
         sharedpref = SharedPrefUtil(requireContext())
@@ -60,23 +60,15 @@ class SearchFragment : Fragment() {
         viewModel.callApiEngSearch()
         subscribeLiveData()
 
-        // Get textview id of search widget
-
-        // Get textview id of search widget
-        val id: Int = sv.getContext().getResources().getIdentifier("android:id/search_src_text", null, null)
+        val id: Int =
+            sv.getContext().getResources().getIdentifier("android:id/search_src_text", null, null)
         val textView = sv.findViewById<TextView>(id)
 
-        val id_icon: Int = sv.getContext().getResources().getIdentifier("android:id/search_mag_icon", null, null)
+        val id_icon: Int =
+            sv.getContext().getResources().getIdentifier("android:id/search_mag_icon", null, null)
 
-
-// Set search text color
-
-// Set search text color
         textView.setTextColor(Color.BLACK)
 
-// Set search hints color
-
-// Set search hints color
         textView.setHintTextColor(Color.GRAY)
 
         val searchHintIcon: ImageView = sv.findViewById(id_icon) as ImageView
@@ -87,14 +79,17 @@ class SearchFragment : Fragment() {
 
 
     private fun subscribeLiveData() {
-        viewModel.isResponseAdapter.observe(viewLifecycleOwner, Observer{
+        viewModel.isResponseAdapter.observe(viewLifecycleOwner, Observer {
             (binding.recyclerSearch.adapter as EngineerAdapter).addList(it)
-            sv.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {
                     var recentSearch: ArrayList<EngineerModel> = ArrayList()
                     for (data in it) {
-                        if (data.nameEngineer.contains(query) || data.nameFreelance.contains(query) || data.skill.toString().contains(query)  ) {
-                            recentSearch.add(data) }
+                        if (data.nameEngineer.contains(query) || data.nameFreelance.contains(query) || data.skill.toString()
+                                .contains(query)
+                        ) {
+                            recentSearch.add(data)
+                        }
                     }
                     (binding.recyclerSearch.adapter as EngineerAdapter).addList(recentSearch)
                     return false
@@ -103,8 +98,12 @@ class SearchFragment : Fragment() {
                 override fun onQueryTextChange(newText: String): Boolean {
                     var recentSearch: ArrayList<EngineerModel> = ArrayList()
                     for (data in it) {
-                        if (data.nameEngineer.contains(newText) || data.nameFreelance.contains(newText) || data.skill.toString().contains(newText)  ) {
-                            recentSearch.add(data) }
+                        if (data.nameEngineer.contains(newText) || data.nameFreelance.contains(
+                                newText
+                            ) || data.skill.toString().contains(newText)
+                        ) {
+                            recentSearch.add(data)
+                        }
                     }
                     (binding.recyclerSearch.adapter as EngineerAdapter).addList(recentSearch)
                     return false

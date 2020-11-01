@@ -27,29 +27,34 @@ class RegisterActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         viewModel.setSharedPreference(sharedpref)
-        if (service != null){
+        if (service != null) {
             viewModel.setRegisterService(service)
         }
         setUpListener()
         subscribeLiveData()
     }
-    private fun setUpListener(){
+
+    private fun setUpListener() {
         binding.btnSignup.setOnClickListener {
-            viewModel.callApi(binding.etFullname.text.toString(), binding.etEmailR.text.toString(), binding.etPasswordR.text.toString())
+            viewModel.callApi(
+                binding.etFullname.text.toString(),
+                binding.etEmailR.text.toString(),
+                binding.etPasswordR.text.toString()
+            )
         }
         binding.tvSignin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
     }
-    private fun subscribeLiveData(){
+
+    private fun subscribeLiveData() {
         viewModel.isRegisterLivedata.observe(this, Observer {
             if (it) {
                 sharedpref.putBoolean(Constant.PREF_REGISTER, true)
                 Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
-            }
-            else {
+            } else {
                 Toast.makeText(this, "FAILED!", Toast.LENGTH_SHORT).show()
             }
         })

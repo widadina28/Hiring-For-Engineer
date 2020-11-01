@@ -1,6 +1,6 @@
 package com.ros.hiringapkforengineer.form.skill
 
-data class SkillModel (
+data class SkillModel(
     val idSkill: String,
     val nameSkill: String
 )

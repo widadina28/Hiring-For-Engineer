@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profile.experience.post.AddExperienceFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E5E5E5"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_word_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work Experience"
+                    android:textSize="18dp"
+                    android:textColor="#1F2A36"
+                    android:fontFamily="@font/open_sans"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"/>
+
+                <TextView
+                    android:id="@+id/tv_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Position"
+                    android:textSize="12dp"
+                    android:textColor="#9ea0a5"
+                    android:layout_below="@id/tv_word_experience"
+                    android:textFontWeight="400" />
+
+                <EditText
+                    android:id="@+id/et_position"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="343dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:hint="Position"
+                    android:textSize="14dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="#252121"
+                    android:background="@drawable/new_edit_text"
+                    android:layout_below="@id/tv_position"/>
+
+                <TextView
+                    android:id="@+id/tv_name_company_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="72dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Name Company"
+                    android:textSize="12dp"
+                    android:textColor="#9ea0a5"
+                    android:layout_below="@id/tv_position"
+                    android:textFontWeight="400" />
+
+                <EditText
+                    android:id="@+id/et_name_company_exp"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="343dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:hint="Name Company"
+                    android:textSize="14dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="#252121"
+                    android:background="@drawable/new_edit_text"
+                    android:layout_below="@id/tv_name_company_exp"/>
+
+                <TextView
+                    android:id="@+id/tv_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Date Start"
+                    android:textSize="12dp"
+                    android:textColor="#9ea0a5"
+                    android:layout_below="@id/et_name_company_exp"
+                    android:textFontWeight="400" />
+
+                <EditText
+                    android:id="@+id/et_start"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="343dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:hint="Date Start"
+                    android:textSize="14dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="#252121"
+                    android:background="@drawable/new_edit_text"
+                    android:layout_below="@id/tv_start"/>
+
+                <TextView
+                    android:id="@+id/tv_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Date End"
+                    android:textSize="12dp"
+                    android:textColor="#9ea0a5"
+                    android:layout_below="@id/et_start"
+                    android:textFontWeight="400" />
+
+                <EditText
+                    android:id="@+id/et_end"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="343dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:hint="Date End"
+                    android:textSize="14dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="#252121"
+                    android:background="@drawable/new_edit_text"
+                    android:layout_below="@id/tv_end"/>
+
+                <TextView
+                    android:id="@+id/tv_description_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Description"
+                    android:textSize="12dp"
+                    android:textColor="#9ea0a5"
+                    android:layout_below="@id/et_end"
+                    android:textFontWeight="400" />
+
+                <EditText
+                    android:id="@+id/et_description"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:layout_width="343dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="Description"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="14dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="#252121"
+                    android:background="@drawable/new_edit_text"
+                    android:layout_below="@id/tv_description_exp"/>
+
+                <ImageView
+                    android:id="@+id/btn_add_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_btn_exp"
+                    android:layout_below="@+id/et_description"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"/>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</layout>
